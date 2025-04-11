@@ -7,12 +7,6 @@
             'active' => request()->routeIs('admin.dashboard')
         ],
         [
-            'name' => 'Users',
-            'icon' => 'fa-solid fa-users',
-            'url' => route('admin.users'),
-            'active' => request()->routeIs('admin.users')
-        ],
-        [
             // Familias de productos
             'name' => 'Familias',
             'icon' => 'fa-solid fa-users',

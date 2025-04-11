@@ -55,15 +55,7 @@
                                             class="text-white bg-blue-500 rounded-lg p-2 flex items-center space-x-9">
                                             <i class="fa-solid fa-file-pen"></i>
                                         </button>
-                                        <form action="{{ route('admin.families.destroy', $family->id) }}" method="POST"
-                                            onsubmit="return confirm('¿Estás seguro de que deseas eliminar esta familia?');">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="button"
-                                                class="text-white bg-red-500 rounded-lg p-2 flex items-center space-x-9">
-                                                <i class="fa-solid fa-trash-can"></i>
-                                            </button>
-                                        </form>
+
                                     </td>
                                 </tr>
                             @endforeach

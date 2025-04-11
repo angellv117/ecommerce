@@ -13,7 +13,7 @@ class FamilyController extends Controller
      */
     public function index()
     {
-        $families = Family::paginate();
+        $families = Family::orderBy('id', 'desc')->paginate();
         return view('admin.families.index', compact('families'));
     }
 
@@ -22,7 +22,7 @@ class FamilyController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.families.create');
     }
 
     /**
@@ -30,7 +30,19 @@ class FamilyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
+
+        $exist = Family::where('name', $request->name)->first();
+
+        if ($exist) {
+            return redirect()->back()->with('error', 'La familia ya existe');
+        }
+
+        Family::create($request->all());
+
+        return redirect()->route('admin.families.index')->with('success', 'Familia creada correctamente');
     }
 
     /**
@@ -46,7 +58,7 @@ class FamilyController extends Controller
      */
     public function edit(Family $family)
     {
-        //
+        return view('admin.families.edit', compact('family'));
     }
 
     /**
@@ -54,7 +66,13 @@ class FamilyController extends Controller
      */
     public function update(Request $request, Family $family)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
+
+        $family->update($request->all());
+
+        return redirect()->route('admin.families.edit', $family)->with('success', 'Familia actualizada correctamente');
     }
 
     /**
@@ -62,6 +80,7 @@ class FamilyController extends Controller
      */
     public function destroy(Family $family)
     {
-        //
+        return "Eliminar";
+
     }
 }
