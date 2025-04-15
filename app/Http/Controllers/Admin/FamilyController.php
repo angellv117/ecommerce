@@ -37,7 +37,13 @@ class FamilyController extends Controller
         $exist = Family::where('name', $request->name)->first();
 
         if ($exist) {
-            return redirect()->back()->with('error', 'La familia ya existe');
+            session()->flash('swal', [
+                'title' => '¡Atención!',
+                'text' => 'La familia ya existe',
+                'icon' => 'warning',
+            ]);
+
+            return redirect()->back();
         }
 
         Family::create($request->all());

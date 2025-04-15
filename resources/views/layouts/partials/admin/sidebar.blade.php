@@ -13,6 +13,12 @@
             'url' => route('admin.families.index'),
             'active' => request()->routeIs('admin.families.*')
         ],
+        [
+            'name' => 'Categorías',
+            'icon' => 'fa-solid fa-users',
+            'url' => route('admin.categories.index'),
+            'active' => request()->routeIs('admin.categories.*')
+        ],
 
         
 
