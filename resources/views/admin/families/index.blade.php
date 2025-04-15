@@ -4,10 +4,16 @@
         'route' => route('admin.dashboard'),
     ],
     [
-        'name' => 'Familias de productos'
+        'name' => 'Familias de productos',
     ],
 ]">
-
+    <x-slot name="actionButton">
+        <button class="custom-button custom-button-green" type="button"
+            onclick="window.location.href = '{{ route('admin.families.create') }}'">
+            <p class="text-white hidden  md:block">Agregar familia</p>
+            <i class="fa-solid fa-plus block md:hidden"></i>
+        </button>
+    </x-slot>
 
     @if ($families->isEmpty())
         <div class="flex items-center p-4 mb-4 text-sm text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400"
@@ -51,7 +57,8 @@
                                         {{ $family->name }}
                                     </td>
                                     <td class="px-6 py-4 flex items-center justify-center space-x-2">
-                                        <button type="button" x-on:click="window.location.href = '{{ route('admin.families.edit', $family->id) }}'"
+                                        <button type="button"
+                                            x-on:click="window.location.href = '{{ route('admin.families.edit', $family->id) }}'"
                                             class="text-white bg-blue-500 rounded-lg p-2 flex items-center space-x-9">
                                             <i class="fa-solid fa-file-pen"></i>
                                         </button>

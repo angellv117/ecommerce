@@ -20,6 +20,9 @@
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
+
+
+
     <!-- Styles -->
     @livewireStyles
 </head>
@@ -56,10 +59,18 @@
         </div>
     </div>
 
+    <!--sweetalert2-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     @livewireScripts
 
     @stack('scripts')
+
+    @if (session('swal'))
+        <script>
+            Swal.fire(@json(session('swal')));
+        </script>
+    @endif
 
 
 
