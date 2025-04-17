@@ -20,6 +20,10 @@ return new class extends Migration
             $table->float('price');
             $table->foreignId('presentation_id')->constrained();
             $table->foreignId('subcategory_id')->constrained();
+            $table->float('max_temperature');
+            $table->float('min_temperature');
+            $table->float('time_to_melt');
+            $table->float('temperature_to_melt');
             $table->timestamps();
         });
     }

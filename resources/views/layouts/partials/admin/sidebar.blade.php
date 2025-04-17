@@ -15,9 +15,27 @@
         ],
         [
             'name' => 'Categorías',
-            'icon' => 'fa-solid fa-users',
+            'icon' => 'fa-solid fa-layer-group',
             'url' => route('admin.categories.index'),
             'active' => request()->routeIs('admin.categories.*')
+        ],
+        [
+            'name'=> 'Sub Categorias',
+            'icon' => 'fa-solid fa-bars-staggered',
+            'url' => route('admin.subcategories.index'),
+            'active' => request()->routeIs('admin.subcategories.*')
+        ],
+        [
+            'name'=> 'Presentaciones',
+            'icon' => 'fa-solid fa-cube',
+            'url' => route('admin.presentations.index'),
+            'active' => request()->routeIs('admin.presentations.*')
+        ],
+        [
+            'name'=> 'Productos',
+            'icon' => 'fa-solid fa-cheese',
+            'url' => route('admin.products.index'),
+            'active' => request()->routeIs('admin.products.*')
         ],
 
         

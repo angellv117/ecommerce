@@ -27,6 +27,9 @@ Crear seeders
 Restablecer migraciones y seeders
 	php artisan migrate:fresh --seed
 
+Crear favrica de datos
+	php artisan make:factory ProductFactory
+
 Que agarre los estilos en root
 	chmod 755 -R Directorio
 	compouser install

@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 use App\Models\Family;
 use App\Models\Category;
 use App\Models\Subcategory;
+use App\Models\Presentation;
 use Illuminate\Support\Facades\DB;
 class inintData extends Seeder
 {
@@ -40,6 +41,12 @@ class inintData extends Seeder
             ],
         ];
 
+        $presentations = [
+            '200 gr',
+            '500 gr',
+            '1 kg',
+        ];
+
         // Crear familias
         foreach ($families as $family => $categories) {
             $family = Family::create([
@@ -64,6 +71,13 @@ class inintData extends Seeder
         
 
             
+        }
+
+        // Crear presentaciones
+        foreach ($presentations as $presentation) {
+            Presentation::create([
+                'name' => $presentation,
+            ]);
         }
 
         // Crear un usuario
