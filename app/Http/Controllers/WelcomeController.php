@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cover;
+use App\Models\Product;
 class WelcomeController extends Controller
 {
     //
@@ -17,6 +18,10 @@ class WelcomeController extends Controller
                   ->orWhereNull('end_date');
         })
         ->get();
-        return view('welcome', compact('covers'));
+
+
+
+        $products = Product::where('is_active', true)->orderBy('id', 'desc')->with('images')->get();
+        return view('welcome', compact('covers', 'products'));
     }
 }
