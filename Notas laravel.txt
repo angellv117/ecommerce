@@ -1,0 +1,55 @@
+sistemas@productossanjuan.com.mx
++0V5{v1X_l*C_6kN*qnO
+
+Instalar larevel
+	# Run as administrator...
+	Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://php.new/install/windows/8.4'))
+
+intalar jetstream
+	composer require laravel/jetstream
+	php artisan jetstream:install livewire --dark
+	
+	
+migraciones 
+	php artisan migrate
+
+crear modelo con migracion en Singular y camelcase
+	php artisan make:model Family -m
+
+crear controlador de un modelo 
+	php artisan make:controller Admin/FamilyController --model=Family
+
+Crear Tablas 
+	php artisan make:migration create_feature_variant_table
+
+Crear seeders
+	php artisan make:seeder inintData
+
+Restablecer migraciones y seeders
+		php artisan migrate:fresh --seed
+
+Crear favrica de datos
+	php artisan make:factory ProductFactory
+
+Que agarre los estilos en root
+	chmod 755 -R Directorio
+	compouser install
+	npm install
+	npm run dev
+	npm run build
+
+
+Borrar y crear link de resources
+WIN admin
+	borrar la carpeta public/storage
+	php artisan storage:link
+
+SERVER root
+	borrar desde el cpanel public/storage
+	php artisan storage:link
+
+traducir laravel
+	composer require laravel-lang/common
+
+Componente de livewire
+	php artisan make:livewire Admin/Products/ProductCreate

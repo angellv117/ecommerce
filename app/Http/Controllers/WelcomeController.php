@@ -1,0 +1,22 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\Cover;
+class WelcomeController extends Controller
+{
+    //
+    public function index()
+    {
+        //traer las coberturas activas que están entre la fecha actual y la fecha de fin
+        $covers = Cover::where('is_active', true)
+        ->where('start_date', '<=', now())
+        ->where(function ($query) {
+            $query->where('end_date', '>=', now())
+                  ->orWhereNull('end_date');
+        })
+        ->get();
+        return view('welcome', compact('covers'));
+    }
+}
