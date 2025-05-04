@@ -36,7 +36,6 @@ class CoverController extends Controller
     {
         //
         $validator = Validator::make($request->all(), [
-            'title' => 'required',
             'image_path' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
             'is_active' => 'required|boolean',
             'start_date' => 'required|date',
@@ -94,7 +93,6 @@ class CoverController extends Controller
     public function update(Request $request, Cover $cover)
     {
         $validator = Validator::make($request->all(), [
-            'title' => 'required',
             'image_path' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
             'is_active' => 'required|boolean',
             'start_date' => 'required|date',

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('covers', function (Blueprint $table) {
             $table->id();
             $table->string('image_path');
-            $table->string('title');
+            $table->string('title')->nullable();
             $table->datetime('start_date');
             $table->datetime('end_date')->nullable();
             $table->boolean('is_active')->default(true);

@@ -15,8 +15,7 @@
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/9.2.0/swiper-bundle.min.css">
-
+    @stack('styles')
 
     <!-- FontAwesome -->
     <script src="https://kit.fontawesome.com/5801ce9300.js" crossorigin="anonymous"></script>
@@ -32,7 +31,7 @@
         @livewire('navigation')
 
 
-       {{-- 
+        {{-- 
         @if (isset($header))
             <header class="bg-white   shadow">
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
@@ -43,9 +42,14 @@
         --}}
 
         <!-- Page Content -->
-        <main>
+        <main class="bg-white">
             {{ $slot }}
         </main>
+
+        <!--Footer-->
+        <div >
+            @include('layouts.partials.app.footer')
+        </div>
     </div>
 
     @stack('modals')
@@ -57,8 +61,7 @@
     @livewireScripts
 
     @stack('scripts')
-    
+
 </body>
 
 </html>
-
