@@ -1,4 +1,4 @@
-<footer class="bg-gradient-to-r from-blue-800 to-blue-700 shadow-md text-white">
+<footer class="bg-blue-700 shadow-md text-white">
     <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
         <div class="sm:flex sm:items-center sm:justify-between">
             @include('layouts.partials.app.logo')
