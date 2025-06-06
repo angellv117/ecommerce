@@ -1,4 +1,4 @@
-<div class="relative w-full h-28 bg-blue-500 mt-10">
+<div class="relative w-full h-28 bg-blue-700 mt-10">
     @include('layouts.partials.app.wave-top')
 
     @include('layouts.partials.app.wave-buttom')
@@ -14,7 +14,7 @@
     <p class="text-xs text-slate-400">S.A.P.I. de C.V.</p>
 </div>
 <!-- Contenedor principal con layout flexible -->
-<div class="flex flex-col justify-center items-center space-y-24 m-10">
+<div class="flex flex-col justify-center items-center m-5">
 
     <!-- VISIÓN con imagen lateral -->
     <div class="flex flex-col md:flex-row gap-8 items-center">

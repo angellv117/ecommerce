@@ -12,7 +12,7 @@
             @endif
 
             <div class="absolute top-3 right-3 bg-blue-500 text-white text-sm font-bold px-3 py-1 rounded-full">
-                {{ number_format($product->price, 2) }} €
+                {{ number_format($product->price, 2) }} $
             </div>
         </div>
 
