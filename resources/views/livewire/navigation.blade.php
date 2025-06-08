@@ -6,4 +6,6 @@
 
     <!--sidebar-->
     @include('livewire.component.sidebar')
+
+    @stack('js')
 </div>

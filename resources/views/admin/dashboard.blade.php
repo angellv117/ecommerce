@@ -9,7 +9,7 @@
                 <img class="size-8 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}"
                     alt="{{ Auth::user()->name }}" />
                 <div class="ml-4 flex-1">
-                    <span class="text-md font-bold">Buenvendio {{ Auth::user()->name }}</span>
+                    <span class="text-md font-bold">Bienvenido {{ Auth::user()->name }}</span>
 
 
                     <form action="{{ route('logout') }}" method="POST">

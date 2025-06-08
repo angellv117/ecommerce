@@ -14,7 +14,7 @@
             <!-- Right section with search and icons -->
             <div class="flex items-center space-x-3 md:space-x-5">
                 <div class="relative hidden md:block w-64 lg:w-80">
-                    <input type="text" placeholder="Buscar producto"
+                    <input type="text" oninput="search(this.value)" placeholder="Buscar producto"
                         class="w-full px-4 py-2 pr-10 rounded-full text-sm border-none focus:outline-none focus:ring-2 focus:ring-blue-400">
                     <button
                         class="absolute right-0 top-0 h-full px-3 text-gray-500 hover:text-blue-700 transition-colors">
@@ -85,11 +85,22 @@
     <!-- Mobile search bar that can be toggled -->
     <div class="md:hidden bg-blue-800 py-2 px-4">
         <div class="relative">
-            <input type="text" placeholder="Buscar producto"
+            <input type="text" oninput="search(this.value)" placeholder="Buscar producto"
                 class="w-full px-4 py-2 pr-10 rounded-full text-sm border-none focus:outline-none focus:ring-2 focus:ring-blue-400">
             <button class="absolute right-0 top-0 h-full px-3 text-gray-500">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </button>
         </div>
     </div>
+
+    @push('js')
+        <script>
+            function search(value){
+                Livewire.dispatch('search', {
+                    search: value
+                })
+            }
+        </script>
+    @endpush
+
 </header>

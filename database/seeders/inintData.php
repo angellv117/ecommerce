@@ -9,6 +9,8 @@ use App\Models\Category;
 use App\Models\Subcategory;
 use App\Models\Presentation;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+
 class inintData extends Seeder
 {
     /**
@@ -98,6 +100,21 @@ class inintData extends Seeder
                 'created_at' => '2025-04-06 19:38:31',
                 'updated_at' => '2025-04-06 19:38:31',
             ],
+            [
+                'id' => 2,
+                'name' => 'David Zavala',
+                'email' => 'cuentasporpagar@productossanjuan.com.mx',
+                'email_verified_at' => null,
+                'password' => Hash::make('david123'),
+                'two_factor_secret' => null,
+                'two_factor_recovery_codes' => null,
+                'two_factor_confirmed_at' => null,
+                'remember_token' => null,
+                'current_team_id' => null,
+                'profile_photo_path' => null,
+                'created_at' => '2025-04-06 19:38:31',
+                'updated_at' => '2025-04-06 19:38:31',
+            ]
         ]);
 
     }

@@ -48,7 +48,7 @@
                     <li wire:click="$set('family_id', {{ $family->id }})"
                         wire:mouseover="$set('family_id', {{ $family->id }})"
                         class="relative group">
-                        <a class="flex p-3 justify-between items-center rounded-lg transition-all duration-200
+                        <a href="{{route('families.show', $family)}}" class="flex p-3 justify-between items-center rounded-lg transition-all duration-200
                                 hover:bg-white/10 hover:shadow-md hover:translate-x-1">
                             <span class="font-medium group-hover:text-blue-200 transition-colors flex items-center">
                                 <i class="fa-solid fa-layer-group mr-2 opacity-70"></i>
@@ -97,10 +97,10 @@
                     <div class="w-12 h-1 bg-blue-500 rounded-full mt-1"></div>
                 </div>
 
-                <button class="text-sm bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded-lg hidden md:flex items-center transition-colors shadow-sm">
+                <a href="{{route('families.show', $family_id)}}" class="text-sm bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded-lg hidden md:flex items-center transition-colors shadow-sm">
                     Ver todos
                     <i class="fa-solid fa-arrow-right ml-2"></i>
-                </button>
+                </a>
                 <button class="text-sm bg-blue-700 hover:bg-blue-800 text-white p-2 rounded-lg md:hidden transition-colors shadow-sm">
                     <i class="fa-solid fa-plus"></i>
                 </button>
@@ -109,13 +109,15 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
                 @foreach ($this->categories as $category)
                     <div class="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                        <a href="{{route('categories.show', $category)}}">
                         <span class="text-lg font-bold text-blue-700 flex items-center">
                             <i class="fa-solid fa-tag mr-2 text-blue-500 opacity-70"></i>
                             {{ $category->name }}
                         </span>
+                        </a>
                         <div class="mt-3 space-y-1">
                             @foreach ($category->subcategories as $subcategory)
-                                <a class="flex items-center text-gray-700 hover:text-blue-600 hover:bg-blue-50 p-2 rounded-md transition-colors">
+                                <a href="{{route('subcategories.show', $subcategory)}}" class="flex items-center text-gray-700 hover:text-blue-600 hover:bg-blue-50 p-2 rounded-md transition-colors">
                                     <span class="w-1.5 h-1.5 bg-blue-400 rounded-full mr-2"></span>
                                     <span class="text-sm">{{ $subcategory->name }}</span>
                                 </a>
