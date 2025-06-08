@@ -1,4 +1,4 @@
-<div class="min-w-[280px] md:min-w-[320px] px-3 flex-shrink-0">
+<div class="min-w-[280px] md:min-w-[320px] px-3 py-4 flex-shrink-0">
     <div
         class="bg-white  rounded-xl shadow-red-500 overflow-hidden hover:shadow-lg transition-shadow duration-300 h-full flex flex-col">
         <!-- Imagen del producto con badge de precio -->
