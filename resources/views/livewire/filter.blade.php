@@ -22,11 +22,10 @@
         @if ($products->count() > 0)
             <div class=" px-4 flex flex-wrap justify-evenly min-w-full">
 
-
-
                 @foreach ($products as $product)
                     <div>
-                        @livewire('products.product-card', ['product' => $product])
+                        
+                        @livewire('products.product-card', ['product' => $product], key('product-' . ($product->sku ?? $product->id) . '-order-' . $orderBy))
                     </div>
                 @endforeach
             </div>

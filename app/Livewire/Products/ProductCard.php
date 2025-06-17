@@ -28,15 +28,22 @@ class ProductCard extends Component
         }
 
         try {
-
             Cart::instance('shopping');
+
+            //verificar si el producto tiene imagenes
+            if($this->product->images->count() > 0){
+                $image = $this->product->images[0]->path;
+            }else{
+                $image = $this->product->image_path;
+            }
+
             Cart::add([
                 'id' => $this->product->sku,
                 'name' => $this->product->name,
                 'qty' => 1,
                 'price' => $this->product->price,
                 'options' => [
-                    'image' => $this->product->image_path,
+                    'image' => $image,
                 ],
             ]);
 

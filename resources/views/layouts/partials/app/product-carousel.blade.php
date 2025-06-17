@@ -17,7 +17,7 @@
         <!-- Slides -->
         @foreach ($products as $product)
             <div class="swiper-slide">
-                @livewire('products.product-card', ['product' => $product])
+                @livewire('products.product-card', ['product' => $product], key($product->id))
             </div>
         @endforeach
     </div>

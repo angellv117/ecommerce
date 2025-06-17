@@ -11,8 +11,6 @@ class AddToCard extends Component
     public $product;
     public $qty = 1;
 
-    //listener para agregar el producto al carrito desde el componente ProductCard
-    protected $listeners = ['addToCartFromProductCard' => 'addToCartFromProductCard'];
 
 
     // Agregar al carrito 
@@ -29,6 +27,12 @@ class AddToCard extends Component
         }
 
         try {
+            //verificar si el producto tiene imagenes
+            if($this->product->images->count() > 0){
+                $image = $this->product->images[0]->path;
+            }else{
+                $image = $this->product->image_path;
+            }
 
             Cart::instance('shopping');
             Cart::add([
@@ -37,51 +41,7 @@ class AddToCard extends Component
                 'qty' => $this->qty,
                 'price' => $this->product->price,
                 'options' => [
-                    'image' => $this->product->image,
-                ],
-            ]);
-
-            
-
-            $this->dispatch('swal', [
-                'icon' => 'success',
-                'title' => '¡Éxito!',
-                'text' => 'Producto agregado al carrito correctamente.',
-            ]);
-
-            //emitir el evento para actualizar el carrito
-            $this->dispatch('cartUpdated', Cart::content()->count());
-        } catch (\Throwable $th) {
-            $this->dispatch('swal', [
-                'icon' => 'error',
-                'title' => '¡Error!',
-                'text' => 'Hubo un problema al agregar el producto al carrito.' . $th->getMessage(),
-            ]);
-        }
-    }
-
-    public function addToCartFromProductCard($product)
-    {
-        //verificar si esta iniciado sesion
-        if (!auth()->check()) {
-            $this->dispatch('swal', [
-                'icon' => 'error',
-                'title' => '¡Error!',
-                'text' => 'Debes iniciar sesión para agregar productos al carrito.',
-            ]);
-            return;
-        }
-
-        try {
-
-            Cart::instance('shopping');
-            Cart::add([
-                'id' => $product->sku,
-                'name' => $product->name,
-                'qty' => 1,
-                'price' => $product->price,
-                'options' => [
-                    'image' => $product->image,
+                    'image' => $image,
                 ],
             ]);
 

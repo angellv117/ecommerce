@@ -28,7 +28,12 @@ Route::middleware([
     })->name('dashboard');
 });
 
-Route::get('cart', function () {
+Route::get('cartD', function () {
     Cart::instance('shopping');
     return Cart::destroy();;
+})->name('cart');
+
+Route::get('cart', function () {
+    Cart::instance('shopping');
+    return Cart::content();;
 })->name('cart');
