@@ -26,7 +26,7 @@
 
                 @foreach ($products as $product)
                     <div>
-                        @include('layouts.partials.app.card-product', ['product' => $product])
+                        @livewire('products.product-card', ['product' => $product])
                     </div>
                 @endforeach
             </div>

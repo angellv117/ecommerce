@@ -1,9 +1,9 @@
 <x-app-layout>
 
     {{-- CARRUSEL --}}
-    @include('layouts.partials.app.carrusel')
+    @include('layouts.partials.app.carrusel') 
 
-
+    
     {{-- CONTENIDO DESPUÉS DEL CARRUSEL --}}
     <div class=" mt-4 flex flex-col items-center justify-center">
         <!-- Product Carousel -->

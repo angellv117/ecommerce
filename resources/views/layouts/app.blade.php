@@ -28,28 +28,23 @@
 
     <div class="min-h-screen bg-gray-100  ">
         {{-- @livewire('navigation-menu') --}}
-        @livewire('navigation')
-
-
-        {{-- 
-        @if (isset($header))
-            <header class="bg-white   shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    {{ $header }}
-                </div>
-            </header>
-        @endif
-        --}}
-
+        @livewire('navigation', ['cartCount' => $cartItemsCount])
         <!-- Page Content -->
         <main class="bg-white">
             {{ $slot }}
         </main>
 
         <!--Footer-->
-        <div >
+        <div>
             @include('layouts.partials.app.footer')
         </div>
+
+        <!-- Modal -->
+        <x-modalfuture id="future-modal" title="Función en desarrollo">
+            <p class="text-sm text-gray-700">
+                Esta función está en desarrollo. espere que se implemente en una próxima actualización.
+            </p>
+        </x-modalfuture>
     </div>
 
     @stack('modals')
@@ -61,6 +56,18 @@
     @livewireScripts
 
     @stack('scripts')
+
+    @if (session('swal'))
+        <script>
+            Swal.fire(@json(session('swal')));
+        </script>
+    @endif
+
+    <script>
+        Livewire.on('swal', (data) => {
+            Swal.fire(data[0]);
+        });
+    </script>
 
 </body>
 

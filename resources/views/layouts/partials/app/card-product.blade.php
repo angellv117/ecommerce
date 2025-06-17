@@ -24,7 +24,7 @@
 
             <!-- Altura fija para el título con truncado -->
             <h3 class="text-lg font-bold text-gray-800 mb-2 line-clamp-2 h-14 overflow-hidden">{{ $product->name }}</h3>
-            
+
             <!-- Espaciador flexible que empuja el contenido inferior hacia abajo -->
             <div class="flex-grow"></div>
 
@@ -52,18 +52,19 @@
 
             <!-- Botones de acción -->
             <div class="flex space-x-2">
-                <a
+                <a href="{{ route('products.show', $product) }}"
                     class="flex-1 bg-blue-500 hover:bg-blue-600 text-white text-center py-2 px-4 rounded-lg transition-colors duration-300">
                     Ver detalles
                 </a>
-                <button type="button" data-product-id="{{ $product->id }}"
-                    class="add-to-cart bg-white hover:bg-gray-100 text-blue-500 border border-blue-500 p-2 rounded-lg transition-colors duration-300">
+
+                <a wire:click="addToCartFromProductCard" wire:loading.attr="disabled"
+                    class="add-to-cart flex items-center gap-2 bg-white hover:bg-gray-100 text-blue-500 border border-blue-500 p-2 rounded-lg transition-colors duration-300">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                     </svg>
-                </button>
+                </a>
             </div>
         </div>
     </div>

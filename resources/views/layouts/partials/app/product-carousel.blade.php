@@ -17,7 +17,7 @@
         <!-- Slides -->
         @foreach ($products as $product)
             <div class="swiper-slide">
-                @include('layouts.partials.app.card-product', ['product' => $product])
+                @livewire('products.product-card', ['product' => $product])
             </div>
         @endforeach
     </div>

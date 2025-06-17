@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Cover;
 use App\Models\Product;
+use Gloudemans\Shoppingcart\Facades\Cart;
+
 class WelcomeController extends Controller
 {
     //
@@ -22,6 +24,9 @@ class WelcomeController extends Controller
 
 
         $products = Product::where('is_active', true)->orderBy('id', 'desc')->with('images')->take(10)->get();
-        return view('welcome', compact('covers', 'products'));
+        Cart::instance('shopping');
+        $cartCount = Cart::content()->count();
+        
+        return view('welcome', compact('covers', 'products', 'cartCount'));
     }
 }

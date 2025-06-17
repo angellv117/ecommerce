@@ -2,7 +2,7 @@
 
 
     <!--navbar-->
-    @include('livewire.component.navbar')
+    @include('livewire.component.navbar', ['cartCount' => $cartCount])
 
     <!--sidebar-->
     @include('livewire.component.sidebar')
