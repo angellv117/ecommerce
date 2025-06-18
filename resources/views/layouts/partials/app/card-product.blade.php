@@ -57,7 +57,7 @@
                     Ver detalles
                 </a>
 
-                <a wire:click="addToCartFromProductCard" wire:loading.attr="disabled"
+                <a wire:click="addToCart" wire:loading.attr="disabled"
                     class="add-to-cart flex items-center gap-2 bg-white hover:bg-gray-100 text-blue-500 border border-blue-500 p-2 rounded-lg transition-colors duration-300">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
