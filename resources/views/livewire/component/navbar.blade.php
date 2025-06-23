@@ -29,13 +29,13 @@
 
                 <!-- Cart button with counter -->
                 <div class="relative">
-                    <button onclick="openModal('future-modal')" class="text-white p-2 rounded-lg hover:bg-blue-600/50 transition-colors relative">
+                    <a href="{{route('cart.index')}}" class="text-white p-2 rounded-lg hover:bg-blue-600/50 transition-colors relative">
                         <i class="fa-solid fa-cart-shopping text-lg"></i>
                         
                         <span
                             class="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
                             {{ $cartCount }}</span>
-                    </button>
+                    </a>
                     
                 </div>
 
