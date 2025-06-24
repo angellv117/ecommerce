@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FamilyController;
 use App\Http\Controllers\ProductController;
@@ -17,6 +18,9 @@ Route::get('subcategories/{subcategory}', [SubcategoryController::class, 'show']
 
 // ruta para ver un producto
 Route::get('products/{product}', [ProductController::class, 'show'])->name('products.show');
+
+// ruta que controla el carrito de compras
+Route::get('myCart', [CartController::class, 'index'])->name('cart.index');
 
 Route::middleware([
     'auth:sanctum',
