@@ -35,11 +35,11 @@
                         <label class="block text-sm font-medium text-gray-700 mb-2">Cantidad</label>
                         <div class="flex items-center gap-3 w-fit border border-gray-300 rounded-lg px-3 py-1.5">
                             <button type="button" @click="if (qty > 1) qty--"
-                                class="text-lg text-gray-600 hover:text-primary-700">–</button>
+                                class="text-lg text-gray-600 hover:text-primary-700 w-full hover:bg-gray-100 rounded-l-lg">–</button>
                             <span id="quantity" x-text="qty" min="1"
                                 class="w-12 text-center border-none focus:ring-0 text-gray-800 text-sm font-semibold bg-transparent" ></span>
                             <button type="button" @click="qty++"
-                                class="text-lg text-gray-600 hover:text-primary-700">+</button>
+                                class="text-lg text-gray-600 hover:text-primary-700 w-full hover:bg-gray-100 rounded-r-lg">+</button>
                         </div>
                     </div>
 
@@ -47,7 +47,7 @@
                     <div class="mt-6 flex flex-wrap gap-4">
                         <button type="button" wire:click="addToCart"
                             wire:loading.attr="disabled"
-                            class="add-to-cart flex items-center gap-2 bg-white hover:bg-gray-100 text-blue-500 border border-blue-500 p-2 rounded-lg transition-colors duration-300">
+                            class="add-to-cart custom-button-blue-outline flex items-center gap-2">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

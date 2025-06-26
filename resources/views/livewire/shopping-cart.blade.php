@@ -21,7 +21,7 @@
                     @forelse (Cart::content() as $item)
                         
                         <li class="lg:flex mr-2">
-                            <img class="w-full lg:w-36 aspect-[16/9] object-cover object-center" src="{{$item->options->image}}" alt="">
+                            <img class="w-full lg:w-36 aspect-[16/9] object-contain object-center" src="{{ asset('storage/' . $item->options->image)}}" alt="">
 
                             <div class="w-80">
                                 <p class="text-sm">
@@ -44,14 +44,14 @@
                             <div class="ml-auto">
                            <div class="flex items-center gap-3 w-fit border border-gray-300 rounded-lg px-3 py-1.5">
                             <button type="button"
-                                class="text-lg text-gray-600 hover:text-primary-700"
+                                class="text-lg text-gray-600 hover:text-primary-700 w-full hover:bg-gray-100 rounded-l-lg"
                                 wire:click="decrease('{{$item->rowId}}')">
                                 –
                             </button>
                             <span id="quantity" min="1"
                                 class="w-12 text-center border-none focus:ring-0 text-gray-800 text-sm font-semibold bg-transparent" >{{$item->qty}}</span>
                             <button type="button" 
-                                class="text-lg text-gray-600 hover:text-primary-700"
+                                class="text-lg text-gray-600 hover:text-primary-700 w-full hover:bg-gray-100 rounded-r-lg"
                                 wire:click="increase('{{$item->rowId}}')">
                                 +
                             </button>
@@ -78,7 +78,7 @@
                     <p>MXN ${{Cart::subtotal()}}</p>
                 </div>
 
-                <a href="" class="custom-button custom-button-blue block w-full text-center">Continuar compra</a>
+                <button onclick="navigateToShopping()" class="custom-button-blue block w-full text-center">Continuar compra</button>
             </div>
 
         </div>
@@ -86,3 +86,23 @@
     </div>
 
 </div>
+
+
+@push('scripts')
+    <script>
+        function navigateToShopping() {
+            if ({{ Cart::count() }} === 0) {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Carrito vacío',
+                    text: 'No puedes continuar con la compra porque el carrito está vacío.',
+                    confirmButtonText: 'Aceptar'
+                });
+                return;
+            }
+
+            // Redirige si hay productos
+            window.location.href = "{{ route('shopping.index') }}";
+        }
+    </script>
+@endpush

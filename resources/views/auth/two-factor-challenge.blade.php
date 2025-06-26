@@ -1,7 +1,7 @@
 <x-guest-layout>
     <x-authentication-card>
         <x-slot name="logo">
-            <x-authentication-card-logo />
+            @include('layouts.partials.app.logo')
         </x-slot>
 
         <div x-data="{ recovery: false }">

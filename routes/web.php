@@ -7,6 +7,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SubcategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\ShoppingController;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
 
@@ -19,8 +20,13 @@ Route::get('subcategories/{subcategory}', [SubcategoryController::class, 'show']
 // ruta para ver un producto
 Route::get('products/{product}', [ProductController::class, 'show'])->name('products.show');
 
-// ruta que controla el carrito de compras
-Route::get('myCart', [CartController::class, 'index'])->name('cart.index');
+Route::get('myCart', [CartController::class, 'index'])
+    ->middleware('auth')
+    ->name('cart.index');
+
+Route::get('shopping', [ShoppingController::class, 'index'])
+    ->middleware('auth')
+    ->name('shopping.index');
 
 Route::middleware([
     'auth:sanctum',

@@ -29,7 +29,7 @@
 
                 <!-- Cart button with counter -->
                 <div class="relative">
-                    <a href="{{route('cart.index')}}" class="text-white p-2 rounded-lg hover:bg-blue-600/50 transition-colors relative">
+                    <a href="{{ route('cart.index') }}" class="text-white p-2 rounded-lg hover:bg-blue-600/50 transition-colors relative">
                         <i class="fa-solid fa-cart-shopping text-lg"></i>
                         
                         <span

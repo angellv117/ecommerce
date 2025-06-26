@@ -1,5 +1,6 @@
 @import 'buttons.css';
 @import 'componets.css';
+@import 'hovers.css';
 
 @tailwind base;
 @tailwind components;

@@ -87,8 +87,10 @@ class inintData extends Seeder
         DB::table('users')->insert([
             [
                 'id' => 1,
-                'name' => 'Manuel Angel Lopez Vazquez',
+                'name' => 'Manuel Angel',
                 'email' => 'sistemas@productossanjuan.com.mx',
+                'last_name' => 'Lopez Vazquez',
+                'phone' => '2281818181',
                 'email_verified_at' => null,
                 'password' => '$2y$12$lMlTmirrPXD9CD.P6BJOUuYPRD897m0jr/RFi1YmniBbDt29qTFhm', // ya está hasheado
                 'two_factor_secret' => null,
@@ -102,7 +104,9 @@ class inintData extends Seeder
             ],
             [
                 'id' => 2,
-                'name' => 'David Zavala',
+                'name' => 'David',
+                'last_name' => 'Zavala',
+                'phone' => '2281818181',
                 'email' => 'cuentasporpagar@productossanjuan.com.mx',
                 'email_verified_at' => null,
                 'password' => Hash::make('david123'),

@@ -53,12 +53,12 @@
             <!-- Botones de acción -->
             <div class="flex space-x-2">
                 <a href="{{ route('products.show', $product) }}"
-                    class="flex-1 bg-blue-500 hover:bg-blue-600 text-white text-center py-2 px-4 rounded-lg transition-colors duration-300">
+                    class="flex-1 custom-button-blue">
                     Ver detalles
                 </a>
 
                 <button type="button" wire:click="addToCartFromProductCard" wire:loading.attr="disabled"
-                    class="add-to-cart flex items-center gap-2 bg-white hover:bg-gray-100 text-blue-500 border border-blue-500 p-2 rounded-lg transition-colors duration-300">
+                    class="add-to-cart custom-button-blue-outline flex items-center gap-2">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
