@@ -37,6 +37,9 @@ class ProductCard extends Component
                 $image = $this->product->image_path;
             }
 
+
+            
+
             Cart::add([
                 'id' => $this->product->sku,
                 'name' => $this->product->name,
@@ -46,6 +49,10 @@ class ProductCard extends Component
                     'image' => $image,
                 ],
             ]);
+
+            if(auth()->check()){
+                Cart::store(auth()->id());
+            }
 
             
 
