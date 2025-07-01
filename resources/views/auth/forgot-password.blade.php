@@ -11,6 +11,9 @@
         @session('status')
             <div class="mb-4 font-medium text-sm text-green-600  ">
                 {{ $value }}
+                <span class="font-bold">
+                    Revise su bandeja de SPAM o correo no deseado.
+                </span>
             </div>
         @endsession
 
