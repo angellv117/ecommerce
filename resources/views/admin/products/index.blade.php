@@ -16,8 +16,7 @@
     </x-slot>
 
     @if ($products->isEmpty())
-        <div class="flex items-center p-4 mb-4 text-sm text-blue-800 rounded-lg bg-blue-50    "
-            role="alert">
+        <div class="flex items-center p-4 mb-4 text-sm text-blue-800 rounded-lg bg-blue-50    " role="alert">
             <svg class="shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor" viewBox="0 0 20 20">
                 <path
@@ -64,15 +63,22 @@
                         <tbody>
                             @foreach ($products as $product)
                                 <tr class="bg-white border-b     border-gray-200">
-                                    <th scope="row"
-                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap  ">
+                                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap  ">
                                         {{ $product->id }}
                                     </th>
                                     <td class="px-6 py-4">
                                         {{ $product->sku }}
                                     </td>
                                     <td class="px-6 py-4">
-                                        <img src="{{ asset('storage/' . $product->image_path) }}" alt="Imagen del producto" class="w-10 h-10 rounded-full">
+                                        @if (count($product->images) > 0)
+                                            <img src="{{ asset('storage/' . $product->images[0]->path) }}"
+                                                alt="{{ $product->name }}"
+                                                class="w-10 h-10 object-contain transition-transform duration-300 hover:scale-105">
+                                        @else
+                                            <img src="{{ asset('storage/' . $product->image_path) }}"
+                                                alt="{{ $product->name }}"
+                                                class="w-10 h-10 object-contain transition-transform duration-300 hover:scale-105">
+                                        @endif
                                     </td>
                                     <td class="px-6 py-4">
                                         {{ $product->name }}

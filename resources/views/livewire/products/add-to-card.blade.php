@@ -4,15 +4,23 @@
         <div class="max-w-screen-xl px-4 mx-auto 2xl:px-0">
             <div class="lg:grid lg:grid-cols-2 lg:gap-12 xl:gap-20">
                 <!-- Imagen -->
-                <div class="shrink-0 max-w-md lg:max-w-lg mx-auto">
-                    @if (count($product->images) > 0)
-                        <img src="{{ asset('storage/' . $product->images[0]->path) }}" alt="{{ $product->name }}"
-                            class="w-full h-full object-contain transition-transform duration-300 hover:scale-105">
-                    @else
-                        <img src="{{ asset('storage/' . $product->image_path) }}" alt="{{ $product->name }}"
-                            class="w-full h-full object-contain transition-transform duration-300 hover:scale-105">
-                    @endif
+                <div x-data="{ selectedImage: '{{ count($product->images) > 0 ? asset('storage/' . $product->images[0]->path) : asset('storage/' . $product->image_path) }}' }" class="shrink-0 max-w-md lg:max-w-lg mx-auto">
+                    <!-- Imagen principal con efecto zoom -->
+                    <div class="overflow-hidden  rounded-lg group">
+                        <img :src="selectedImage" alt="{{ $product->name }}"
+                            class="w-full h-full object-contain transition-transform duration-300 group-hover:scale-110">
+                    </div>
+
+                    <!-- Miniaturas -->
+                    <div class="flex gap-2 mt-4 justify-center">
+                        @foreach ($product->images as $image)
+                            <img src="{{ asset('storage/' . $image->path) }}" alt="thumb"
+                                @click="selectedImage = '{{ asset('storage/' . $image->path) }}'"
+                                class="w-16 h-16 object-cover border border-gray-300 rounded cursor-pointer hover:ring-2 hover:ring-primary-500 transition">
+                        @endforeach
+                    </div>
                 </div>
+
 
                 <!-- Detalles -->
                 <div class="flex flex-col justify-between mt-8 lg:mt-0">
@@ -37,7 +45,7 @@
                             <button type="button" @click="if (qty > 1) qty--"
                                 class="text-lg text-gray-600 hover:text-primary-700 w-full hover:bg-gray-100 rounded-l-lg">–</button>
                             <span id="quantity" x-text="qty" min="1"
-                                class="w-12 text-center border-none focus:ring-0 text-gray-800 text-sm font-semibold bg-transparent" ></span>
+                                class="w-12 text-center border-none focus:ring-0 text-gray-800 text-sm font-semibold bg-transparent"></span>
                             <button type="button" @click="qty++"
                                 class="text-lg text-gray-600 hover:text-primary-700 w-full hover:bg-gray-100 rounded-r-lg">+</button>
                         </div>
@@ -45,8 +53,7 @@
 
                     <!-- Acciones -->
                     <div class="mt-6 flex flex-wrap gap-4">
-                        <button type="button" wire:click="addToCart"
-                            wire:loading.attr="disabled"
+                        <button type="button" wire:click="addToCart" wire:loading.attr="disabled"
                             class="add-to-cart custom-button-blue-outline flex items-center gap-2">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
