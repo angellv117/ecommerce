@@ -30,7 +30,7 @@
 
                         <div class="mt-4 flex items-center justify-between flex-wrap gap-4">
                             <p class="text-3xl font-extrabold text-primary-700">
-                                {{ number_format($product->price, 2) }} $</p>
+                                $ {{ number_format($product->price, 2) }} MXN</p>
 
 
                         </div>
