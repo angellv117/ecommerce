@@ -1,7 +1,7 @@
-<x-container class="min-h-screen">
+<x-container class="px-4 min-h-screen">
 
-    <section class="bg-white my-2 antialiased  px-4">
-        <div class="max-w-screen-xl mx-auto 2xl:px-0">
+    <section class="py-10 bg-white antialiased">
+        <div class="max-w-screen-xl px-4 mx-auto 2xl:px-0">
             <div class="lg:grid lg:grid-cols-2 lg:gap-12 xl:gap-20">
                 <!-- Imagen -->
                 <div x-data="{ selectedImage: '{{ count($product->images) > 0 ? asset('storage/' . $product->images[0]->path) : asset('storage/' . $product->image_path) }}' }" class="shrink-0 max-w-md lg:max-w-lg mx-auto">
