@@ -19,6 +19,9 @@
 
     <!-- FontAwesome -->
     <script src="https://kit.fontawesome.com/5801ce9300.js" crossorigin="anonymous"></script>
+    <!-- Swiper -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    
     <!-- Styles -->
     @livewireStyles
 </head>
@@ -52,6 +55,7 @@
 
     <!--sweetalert2-->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     @livewireScripts
 

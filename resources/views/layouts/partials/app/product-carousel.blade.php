@@ -10,6 +10,8 @@
     <p class="font-light text-gray-500 lg:mb-16 sm:text-xl ">Explora la colección completa de productos de nuestra
         empresa</p>
 </div>
+
+
 <!-- Slider main container -->
 <div class="swiper CarouselProducts w-full">
     <!-- Additional required wrapper -->
