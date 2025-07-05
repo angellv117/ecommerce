@@ -34,12 +34,12 @@
                                 <p class="text-center text-sm text-gray-500">No hay productos en el carrito</p>
                             @endforelse
                         </div>
-                        <button class="w-full custom-button-blue-outline">
+                        <a href="{{route('checkout.index')}}" class="w-full custom-button-blue-outline inline-block text-center">
                             <i class="fa-solid fa-cart-shopping"></i>
                             Comprar
-                        </button>
+                        </a>
                     </div>
-                </div>
+                </div> 
             </div>
         </div>
 

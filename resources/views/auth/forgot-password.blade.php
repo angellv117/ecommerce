@@ -1,5 +1,13 @@
 <x-guest-layout>
-    <x-authentication-card>
+    <div class="min-h-screen bg-cover bg-center bg-no-repeat relative" style="background-image: url('img/9.png');">
+
+
+        <div class="relative z-10 min-h-screen flex">
+            
+
+            <div class="w-full flex items-center justify-center ">
+
+                 <x-authentication-card>
         <x-slot name="logo">
                 @include('layouts.partials.app.logo')
             </x-slot>
@@ -24,11 +32,16 @@
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
             </div>
 
-            <div class="flex items-center justify-end mt-4">
-                <x-button>
+            <div class="flex items-center mt-4">
+                <x-button class="w-full">
                     {{ __('Email Password Reset Link') }}
                 </x-button>
             </div>
         </form>
     </x-authentication-card>
+               
+            </div>
+        </div>
+
+    </div>
 </x-guest-layout>

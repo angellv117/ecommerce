@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\FamilyController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SubcategoryController;
@@ -27,6 +28,10 @@ Route::get('myCart', [CartController::class, 'index'])
 Route::get('shopping', [ShoppingController::class, 'index'])
     ->middleware('auth')
     ->name('shopping.index');
+
+Route::get('checkout', [CheckoutController::class, 'index'])
+    ->middleware('auth')
+    ->name('checkout.index');
 
 Route::middleware([
     'auth:sanctum',
