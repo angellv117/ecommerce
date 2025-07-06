@@ -4,10 +4,8 @@
             <h2 class="text-2xl font-bold">Direcciones guardadas</h2>
         </header>
         <div class="p-4">
-
+            <!-- Agregar una direccion -->
             @if ($newAddress)
-
-
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                     <div class="col-span-4">
                         <h3 class="text-lg font-bold">Nombre descriptivo de la dirección</h3>
@@ -80,6 +78,7 @@
                     </div>
                 </div>
             @else
+             <!-- Editar una direccion -->
                 @if ($editAddress->id)
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                         <div class="col-span-4">
@@ -153,6 +152,7 @@
                         </div>
                     </div>
                 @else
+                 <!-- Listar las direccion -->
                     @if ($addresses->count() > 0)
                         <div class="grid grid-cols-1 gap-4">
                             @foreach ($addresses as $address)

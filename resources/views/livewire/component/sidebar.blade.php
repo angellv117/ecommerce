@@ -97,12 +97,12 @@
                     <div class="w-12 h-1 bg-blue-500 rounded-full mt-1"></div>
                 </div>
 
-                <a href="{{route('families.show', $family_id)}}" class="text-sm bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded-lg hidden md:flex items-center transition-colors shadow-sm">
-                    Ver todos
-                    <i class="fa-solid fa-arrow-right ml-2"></i>
-                </a>
-                <button class="text-sm bg-blue-700 hover:bg-blue-800 text-white p-2 rounded-lg md:hidden transition-colors shadow-sm">
-                    <i class="fa-solid fa-plus"></i>
+                <button x-on:click="isOpen = false" class="text-sm bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded-lg hidden md:flex items-center transition-colors shadow-sm">
+                    Cerrar menu
+                    <i class="fa-solid fa-xmark ml-2"></i>
+                </button>
+                <button x-on:click="isOpen = false" class="text-sm bg-blue-700 hover:bg-blue-800 text-white p-2 rounded-lg md:hidden transition-colors shadow-sm">
+                    <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
             
