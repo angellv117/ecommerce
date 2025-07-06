@@ -102,7 +102,7 @@
 
             <div class="flex justify-between space-x-4 mb-4">
                 <p class="font-semibold">Total</p>
-                <p class="font-semibold">MXN ${{Cart::instance('shopping')->subtotal() + 100}}</p>
+                <p class="font-semibold">MXN ${{(float) Cart::instance('shopping')->subtotal() + 100}}</p>
             </div>
 
             <div>
