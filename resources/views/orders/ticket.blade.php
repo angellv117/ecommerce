@@ -130,7 +130,7 @@
             <div class="section-title">Información de Entrega</div>
             <table class="info-table">
                 <tr><td><strong>Recibido por:</strong></td><td>{{ $order->address['receiver_name'] }}</td></tr>
-                <tr><td><strong>Dirección:</strong></td><td>{{ $order->address['name'] }}</td></tr>
+                <tr><td><strong>Dirección:</strong></td><td>{{ $order->address['address'] }}</td></tr>
                 <tr><td><strong>Colonia:</strong></td><td>{{ $order->address['community'] }}</td></tr>
                 <tr><td><strong>Ciudad:</strong></td><td>{{ $order->address['city'] }}, {{ $order->address['state'] }}</td></tr>
                 <tr><td><strong>C.P.:</strong></td><td>{{ $order->address['postal_code'] }}</td></tr>
