@@ -21,7 +21,7 @@
     <script src="https://kit.fontawesome.com/5801ce9300.js" crossorigin="anonymous"></script>
     <!-- Swiper -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    
+
     <!-- Styles -->
     @livewireStyles
 </head>
@@ -64,6 +64,25 @@
     @if (session('swal'))
         <script>
             Swal.fire(@json(session('swal')));
+        </script>
+    @endif
+
+    @if (session('swal-check-out'))
+        <script>
+            Swal.fire({
+                title: "Do you want to save the changes?",
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: "Save",
+                denyButtonText: `Don't save`
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    Swal.fire("Saved!", "", "success");
+                } else if (result.isDenied) {
+                    Swal.fire("Changes are not saved", "", "info");
+                }
+            });
         </script>
     @endif
 

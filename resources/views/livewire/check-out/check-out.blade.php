@@ -1,14 +1,13 @@
 <div class="text-gray-700" x-data="{
     pago: 2,
     status: @entangle('statusCode'),
-    message: @entangle('statusMessage')
-}" x-init="console.log('Estado:', status, 'Mensaje:', message)">
+}">
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
 
         <div x-show="status != 0"
             class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm transition-opacity duration-300">
-            <div
+            <div x-show="status == 1"
                 class="flex flex-col items-center justify-center bg-white p-8 rounded-2xl shadow-2xl border border-blue-100 w-72 animate-fade-in">
                 <!-- SVG Spinner animado -->
                 <svg class="animate-spin h-12 w-12 text-blue-600 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -20,11 +19,23 @@
                 </svg>
 
                 <!-- Mensaje -->
-                <p class="text-gray-800 text-center font-semibold text-base leading-snug" x-text="message">
+                <p class="text-gray-800 text-center font-semibold text-base leading-snug" >
                     Espere un momento...
                 </p>
                 
 
+            </div>
+            <div x-show="status == 2"
+            class="flex flex-col items-center justify-center bg-white p-8 rounded-2xl shadow-2xl border border-blue-100 w-72 animate-fade-in">
+                <i class="fa-solid fa-check-circle text-green-600 text-9xl"></i>
+                <p class="text-gray-800 text-center font-semibold text-base leading-snug my-4">
+                    Ticket generado correctamente, revise su correo para el ticket, puede estár en la carpeta de spam
+                </p>
+
+                <button class="w-full custom-button-blue-outline inline-block text-center" onclick="window.location.href = '{{ route('home') }}'">
+                    <span class="hidden lg:block">Ir a la página principal</span>
+                    <i class="fa-solid fa-arrow-right lg:hidden"></i>
+                </button>
             </div>
         </div>
 

@@ -18,7 +18,6 @@ class CheckOut extends Component
     public $address;
     public $payment_method = 0;
     public $statusCode = 0;
-    public $statusMessage = '';
     
     public function mount()
     {
@@ -46,7 +45,6 @@ class CheckOut extends Component
 
 
         $this->statusCode = 1;
-        $this->statusMessage = 'Pedido realizado correctamente, generando ticket...';
 
 
         $this->generateTicket($order->payment_id);
@@ -54,14 +52,15 @@ class CheckOut extends Component
         Cart::instance('shopping')->destroy();
         
 
-        $this->dispatch('swal', [
+        $this->dispatch('swal-check-out', [
             'icon' => 'success',
             'title' => 'Pedido realizado correctamente',
-            'text' => 'El pedido se ha realizado correctamente',
+            'text' => 'El pedido se ha realizado correctamente, revise su correo para el ticket, puede estár en la carpeta de spam',
         ]);
 
+        $this->statusCode = 2;
 
-        return redirect()->route('home');
+        
     }
 
     public function generateTicket($payment_id)
@@ -74,8 +73,7 @@ class CheckOut extends Component
         $order->pdf_path = 'tickets/ticket-' . $order->id . '.pdf';
         $order->save();
 
-        $this->statusCode = 2;
-        $this->statusMessage = 'Ticket generado correctamente, enviando correo...';
+
 
         $this->sendTicket($order, $receiver);
     }
@@ -84,8 +82,7 @@ class CheckOut extends Component
     {
         Mail::to($receiver->email)->send(new TicketOrderMail($order, $receiver, storage_path('app/private/tickets/ticket-' . $order->id . '.pdf')));
 
-        $this->statusCode = 3;
-        $this->statusMessage = 'Correo enviado correctamente';
+
     }
 
     public function render()
