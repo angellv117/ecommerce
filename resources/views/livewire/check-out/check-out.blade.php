@@ -1,10 +1,34 @@
 <div class="text-gray-700" x-data="{
-    pago: 0
-}">
+    pago: 2,
+    status: @entangle('statusCode'),
+    message: @entangle('statusMessage')
+}" x-init="console.log('Estado:', status, 'Mensaje:', message)">
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
 
-        <div class="col-span-1">
+        <div x-show="status != 0"
+            class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm transition-opacity duration-300">
+            <div
+                class="flex flex-col items-center justify-center bg-white p-8 rounded-2xl shadow-2xl border border-blue-100 w-72 animate-fade-in">
+                <!-- SVG Spinner animado -->
+                <svg class="animate-spin h-12 w-12 text-blue-600 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
+                        stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z">
+                    </path>
+                </svg>
+
+                <!-- Mensaje -->
+                <p class="text-gray-800 text-center font-semibold text-base leading-snug" x-text="message">
+                    Espere un momento...
+                </p>
+                
+
+            </div>
+        </div>
+
+        <div class="col-span-1" x-show="status == 0">
             <div class="bg-blue-800 text-white p-4 rounded-lg flex items-center gap-2 justify-between mb-2">
                 <h2 class="text-lg font-bold">Pago</h2>
             </div>
@@ -13,7 +37,8 @@
                 <ul class="divide-y divide-gray-200">
                     <li>
                         <label class="p-4 flex items-center">
-                            <input type="radio" value="1" x-model="pago">
+                            <input type="radio" value="1" x-model="pago" disabled
+                                wire:click="$set('payment_method', 1)">
                             <span class="ml-2">Tarjeta de débito / crédito</span>
                             <i class="fa-solid fa-credit-card ml-auto"></i>
                         </label>
@@ -32,7 +57,7 @@
 
                     <li>
                         <label class="p-4 flex items-center">
-                            <input type="radio" value="2" x-model="pago">
+                            <input type="radio" value="2" x-model="pago" wire:click="$set('payment_method', 2)">
                             <span class="ml-2">Depósito bancario</span>
                             <i class="fa-solid fa-money-bill-transfer ml-auto"></i>
                         </label>
@@ -46,13 +71,15 @@
                             x-transition:leave-end="h-0 overflow-hidden" x-show="pago==2">
                             <h2 class="text-lg">Pago por déposito / transferencia bancaria</h2>
                             <ol class="p-4 flex flex-col gap-2">
-                                <li style="list-style-type: circle">Realiza tu déposito / transferencia a esta cuenta
+                                <li style="list-style-type: circle">Realiza tu déposito / transferencia a esta
+                                    cuenta
                                     bancaria
                                     <ul>
                                         <li>XXXXXXXXXXXXXXXXXXXX</li>
                                     </ul>
                                 </li>
-                                <li style="list-style-type: circle">Razón social: INDUSTRIA LECHERA DE SAN JUAN DEL RIO
+                                <li style="list-style-type: circle">Razón social: INDUSTRIA LECHERA DE SAN JUAN DEL
+                                    RIO
                                 </li>
                                 <li style="list-style-type: circle">RFC: XXXXXXXXXX</li>
                                 <li style="list-style-type: circle">Envía tu comprobante al 427XXXXXXX</li>
@@ -63,7 +90,7 @@
             </div>
         </div>
 
-        <div class="col-span-1">
+        <div class="col-span-1" x-show="status == 0">
             <div class="bg-blue-800 text-white p-4 rounded-lg flex items-center gap-2 justify-between mb-4">
                 <h2 class="text-lg font-bold">Carrito</h2>
                 <i class="fa-solid fa-shopping-cart"></i>
@@ -109,16 +136,17 @@
 
             <div class="flex justify-between space-x-4 mb-4">
                 @php
-                $subtotal = (float) str_replace(',', '', Cart::instance('shopping')->subtotal());
-                $shipping = 100;
-                $total = $subtotal + $shipping;
-            @endphp
+                    $subtotal = (float) str_replace(',', '', Cart::instance('shopping')->subtotal());
+                    $shipping = 100;
+                    $total = $subtotal + $shipping;
+                @endphp
                 <p class="font-semibold">Total</p>
                 <p class="font-semibold">MXN ${{ number_format($total, 2, '.', '') }}</p>
             </div>
 
             <div>
-                <button class="w-full custom-button-blue-outline inline-block text-center">
+                <button class="w-full custom-button-blue-outline inline-block text-center" wire:click="pay"
+                    x-on:click="status = 1">
                     Realizar pedido y pagar
                 </button>
             </div>

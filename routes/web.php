@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\ShoppingController;
 use Gloudemans\Shoppingcart\Facades\Cart;
-
+use App\Models\Order;
+use App\Models\User;
 
 Route::get('/', [WelcomeController::class, 'index'])->name('home');
 
@@ -43,12 +44,13 @@ Route::middleware([
     })->name('dashboard');
 });
 
-Route::get('cartD', function () {
-    Cart::instance('shopping');
-    return Cart::destroy();;
-})->name('cart');
+Route::get('prueba', function () {
+    $order = Order::latest()->first();
+    $receiver = User::find($order->address['user_id']);
 
-Route::get('cart', function () {
-    Cart::instance('shopping');
-    return Cart::content();;
+    $pdf = PDF::loadView('orders.ticket', compact('order', 'receiver'))->setPaper('letter', 'landscape');
+    $pdf->save(storage_path('app/private/tickets/ticket-' . $order->id . '.pdf'));
+    $order->pdf_path = 'tickets/ticket-' . $order->id . '.pdf';
+    $order->save();
+    return "Ticket generado correctamente";
 })->name('cart');
