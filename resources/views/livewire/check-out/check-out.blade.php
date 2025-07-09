@@ -1,5 +1,5 @@
 <div class="text-gray-700" x-data="{
-    pago: 2,
+    pago: @entangle('payment_method'),
     status: @entangle('statusCode'),
 }">
 
@@ -48,7 +48,7 @@
                 <ul class="divide-y divide-gray-200">
                     <li>
                         <label class="p-4 flex items-center">
-                            <input type="radio" value="1" x-model="pago" disabled
+                            <input type="radio" value="1" x-model="pago" disabled x-on:click="status = 1"
                                 wire:click="$set('payment_method', 1)">
                             <span class="ml-2">Tarjeta de débito / crédito</span>
                             <i class="fa-solid fa-credit-card ml-auto"></i>
@@ -68,7 +68,7 @@
 
                     <li>
                         <label class="p-4 flex items-center">
-                            <input type="radio" value="2" x-model="pago" wire:click="$set('payment_method', 2)">
+                            <input type="radio" value="2" x-model="pago" wire:click="$set('payment_method', 2)" x-on:click="status = 1">
                             <span class="ml-2">Depósito bancario</span>
                             <i class="fa-solid fa-money-bill-transfer ml-auto"></i>
                         </label>

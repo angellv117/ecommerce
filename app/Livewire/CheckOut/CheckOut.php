@@ -11,12 +11,14 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\TicketOrderMail;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class CheckOut extends Component
 {
 
     public $address;
-    public $payment_method = 0;
+    public $payment_method = 2;
     public $statusCode = 0;
     
     public function mount()
@@ -50,6 +52,8 @@ class CheckOut extends Component
         $this->generateTicket($order->payment_id);
         
         Cart::instance('shopping')->destroy();
+        DB::table('shoppingcart')->where('identifier', Auth::user()->id)->delete();
+        
         
 
         $this->dispatch('swal-check-out', [

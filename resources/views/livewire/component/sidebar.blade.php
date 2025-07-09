@@ -58,6 +58,20 @@
                         </a>
                     </li>
                 @endforeach
+
+                @auth
+                <li href="{{route('orders.index')}}"
+                    class="relative group mt-4">
+                    <a href="{{route('orders.index')}}" class="flex p-3 justify-between items-center rounded-lg transition-all duration-200
+                            hover:bg-white/10 hover:shadow-md hover:translate-x-1">
+                        <span class="font-medium group-hover:text-blue-200 transition-colors flex items-center">
+                            <i class="fa-solid fa-truck mr-2 opacity-70"></i>
+                            Mis pedidos
+                        </span>
+                        <i class="fa-solid fa-chevron-right text-xs opacity-70 group-hover:opacity-100 transition-all"></i>
+                    </a>
+                </li>
+                @endauth
             </ul>
             
             <!-- User controls at bottom -->

@@ -25,5 +25,10 @@ class Order extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function getStatusNameAttribute()
+    {
+        return OrderStatus::from($this->status)->name;
+    }
+
     
 }

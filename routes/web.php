@@ -12,6 +12,7 @@ use App\Http\Controllers\ShoppingController;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Models\Order;
 use App\Models\User;
+use App\Http\Controllers\Order\OrderController;
 
 Route::get('/', [WelcomeController::class, 'index'])->name('home');
 
@@ -34,15 +35,10 @@ Route::get('checkout', [CheckoutController::class, 'index'])
     ->middleware('auth')
     ->name('checkout.index');
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-});
+
+Route::resource('orders', OrderController::class);
+
+
 
 Route::get('prueba', function () {
     $order = Order::latest()->first();
