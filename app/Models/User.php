@@ -10,6 +10,8 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use App\Models\Role;
+
 
 
 class User extends Authenticatable
@@ -33,6 +35,7 @@ class User extends Authenticatable
         'phone',
         'email',
         'password',
+        'role_id',
     ];
 
     /**
@@ -77,5 +80,15 @@ class User extends Authenticatable
     public function orders()
     {
         return $this->hasMany(Order::class);
+    }
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
+
+    public function isAdmin(): bool
+    {
+        return $this->role == 1;
     }
 }

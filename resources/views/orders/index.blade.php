@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-container class="px-4 py-5">
+    <x-container class="px-4 py-5 min-h-screen">
         <div class="space-y-3">
             <h1 class="text-2xl font-bold text-gray-900">Mis ordenes</h1>
             @foreach ($orders as $order)
