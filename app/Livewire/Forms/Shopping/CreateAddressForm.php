@@ -25,7 +25,7 @@ class CreateAddressForm extends Form
     public function rules()
     {
         return [
-            'name' => 'required|string|max:255|unique:addresses,name',
+            'name' => 'required|string|max:255',
             'address' => 'required|string|max:255',
             'community' => 'required|string|max:255',
             'city' => 'required|string|max:255',

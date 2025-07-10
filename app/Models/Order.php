@@ -19,6 +19,7 @@ class Order extends Model
         'address' => 'array',
     ];
 
+    
     //relation with user table 
     public function user()
     {

@@ -5,11 +5,14 @@ namespace App\Livewire\Admin\Order;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 use App\Models\Order;
+
 use App\Models\User;
+use Illuminate\Database\Eloquent\Builder;
 
 class OrderTable extends DataTableComponent
 {
     protected $model = Order::class;
+    public ?int $userId = null;
 
     public function configure(): void
     {
@@ -19,6 +22,17 @@ class OrderTable extends DataTableComponent
         $this->setTableRowUrl(function($row) {
             return route('admin.orders.edit', $row->id);
         });
+    }
+
+    public function builder(): Builder
+    {
+        $query = Order::query()->with('user'); // asumiendo que tienes address->user
+    
+        if ($this->userId) {
+            $query->whereHas('user', fn($q) => $q->where('id', $this->userId));
+        }
+    
+        return $query;
     }
 
     public function columns(): array
@@ -52,13 +66,6 @@ class OrderTable extends DataTableComponent
                 })
                 ->html()
                 ->sortable(),
-            Column::make("Método de pago", "payment_method")
-                ->sortable(),
-            Column::make("Status", "status")
-                ->format(function ($value) {
-                    return '<a>' . $value->label() . $value->color() . '</a>';
-                })
-                ->html(),
             Column::make("Fecha", "created_at")
                 ->format(function ($value) {
                     return $value->format('d/m/Y H:i');

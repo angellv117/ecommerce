@@ -13,6 +13,11 @@ class UserTable extends DataTableComponent
     public function configure(): void
     {
         $this->setPrimaryKey('id');
+
+        // Redirigir a la vista de la orden
+        $this->setTableRowUrl(function($row) {
+            return route('admin.users.edit', $row->id);
+        });
     }
 
     public function columns(): array
@@ -20,13 +25,25 @@ class UserTable extends DataTableComponent
         return [
             Column::make("Id", "id")
                 ->sortable(),
-            Column::make("Name", "name")
+            Column::make("Nombre", "name")
                 ->sortable(),
-            Column::make("Last name", "last_name")
+            Column::make("Apellidos", "last_name")
                 ->sortable(),
-            Column::make("Phone", "phone")
+            Column::make("Rol", "role_id")
+                ->format(function ($value) {
+                    if ($value == 1) {
+                        return '<span class="text-white bg-yellow-500 text-center rounded-full px-2 py-1">Administrador</span>';
+                    } else if ($value == 2) {
+                        return '<span class="text-white bg-green-500 text-center rounded-full px-2 py-1">Vendedor</span>';
+                    } else {
+                        return '<span class="text-white bg-blue-500 text-center rounded-full px-2 py-1">Comprador</span>';
+                    }
+                })
+                ->html()
                 ->sortable(),
-            Column::make("Email", "email")
+            Column::make("Teléfono", "phone")
+                ->sortable(),
+            Column::make("Correo electrónico", "email")
                 ->sortable(),
         ];
     }

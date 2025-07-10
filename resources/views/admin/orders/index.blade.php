@@ -8,6 +8,10 @@
     ],
 ]">
 
+@php
+        $userId = request()->get('userId');
+@endphp
 
-@livewire('admin.order.order-table')
+
+@livewire('admin.order.order-table', ['userId' => $userId])
 </x-admin-layout>

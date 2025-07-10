@@ -4,17 +4,17 @@
         'route' => route('admin.dashboard'),
     ],
     [
-        'name' => 'Ordenes',
-        'route' => route('admin.orders.index'),
+        'name' => 'Usuarios',
+        'route' => route('admin.users.index'),
     ],
     [
-        'name' => 'Orden #' . $order->payment_id,
+        'name' => 'Usuario #' . $user->id,
     ],
 ]">
 
 
 
-@livewire('admin.order.edit-order', ['order' => $order])
+@livewire('admin.users.edit-user', ['user' => $user, 'roles' => $roles, 'orders' => $orders])
 
 
 
