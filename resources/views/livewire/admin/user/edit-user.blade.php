@@ -31,7 +31,11 @@
                                 <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
-                                {{ $user->role->name ?? 'Sin rol asignado' }}
+                                <select wire:model="role_selected" class="w-full p-2 rounded-lg border bg-transparent">
+                                    @foreach ($roles as $item)
+                                        <option class="bg-blue-500 text-white" value="{{ $item->id }}">{{ $item->name }}</option>
+                                    @endforeach
+                                </select>
                             </span>
                             <span class="text-blue-100 text-sm">ID: #{{ $user->id }}</span>
                         </div>
@@ -146,7 +150,7 @@
 
             
             <div class="flex space-x-3">
-                <button class="custom-button-blue">
+                <button class="custom-button-blue" wire:click="updateRole">
 
                     <span class="font-medium">Editar Usuario</span>
                 </button>
